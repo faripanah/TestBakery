@@ -1,5 +1,8 @@
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Menu from './components/Menu';
+import Footer from './components/Footer';
+import UsersList from './components/UsersList';
 import "./App.css";
 
 function App() {
@@ -7,6 +10,9 @@ function App() {
     <div>
       <Navbar />
       <Hero />
+      <Menu />
+      {/*<UsersList />*/}
+      <Footer />
          
     
     
