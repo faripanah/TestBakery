@@ -8,7 +8,7 @@ function UsersList() {
         <section>
             <h2> {people.length} users</h2>
             <>
-                {people.map(person => {const {id, name, image, phone, address, email} = person;
+                {people.map(person => {const {id, name, username, image, email, address, phone, } = person;
                                         return(
                                             <article key={id}>
                                                 <img src={image} alt="user image" className="person-img"/> 
@@ -18,7 +18,7 @@ function UsersList() {
                                                     <p>{address}</p>
                                                     <p>{phone}</p>
                                                 </div>
-                                                <button>View</button>
+                                                <button>Edit</button>
                                                 <button>Delete</button>
                                             </article>
 

@@ -1,5 +1,5 @@
 import logo from '../assets/Images/bakerylogo.png'
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return(
@@ -9,10 +9,10 @@ const Navbar = () => {
             </div>
             <nav>
                 <ul className="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="#find-store">Find Store</a></li>
+                    <li><Link to="/" >Home</Link></li>
+                    <li><Link to="/" >Menu</Link></li>
+                    <li><Link to="/" >Contact Us</Link></li>
+                    <li><Link to="/" >Find Store</Link></li>
                 </ul>
             </nav>
               {/* Icons Section */}
@@ -20,7 +20,7 @@ const Navbar = () => {
                   
                     <i className="fas fa-search" title="Search"></i>
                     <i className="fas fa-shopping-cart" title="Cart"></i>
-                    <i className="fas fa-user" title="User"></i>
+                    <Link to="/signup"><i className="fas fa-user" title="User"></i></Link>
                 </div>
 
 
