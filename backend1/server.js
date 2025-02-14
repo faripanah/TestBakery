@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
-const productRoutes = require('./routes/productRoutes');
-
+const productRoutes = require('./routes/productRoutes'); // Asegúrate de tener este archivo si lo necesitas
+const loginRoutes = require('./routes/loginRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -30,7 +30,9 @@ mongoose.connect('mongodb://localhost:27017/bakeryDB', {
 // Usar las rutas de usuarios
 app.use('/api/users', userRoutes); 
 // Usar las rutas de productos
-app.use('/api/products', productRoutes);
+app.use('/api/products', productRoutes); // Asegúrate de tener este archivo si lo necesitas
+// Usar las rutas de login
+app.use('/api/login', loginRoutes);
 
 // Iniciar el servidor
 app.listen(PORT, () => {

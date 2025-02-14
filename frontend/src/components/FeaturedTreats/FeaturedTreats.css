@@ -1,30 +1,37 @@
-/* Featured Section Styling */
 .featured-section {
-    text-align: center;
-  }
-  
-  /* Title Styling */
-  .featured-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: white;
-  }
-  
-  /* Grid Layout */
-  .featured-grid {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 0 5%;
-    flex-wrap: wrap;
-  }
-  
-  /* Image Styling - Make Images Wider */
-  .featured-card img {
-    width: 300px;  /* ✅ Increase width */
-    height: 380px; /* ✅ Keep a balanced height */
-    object-fit: cover; /* ✅ Maintain aspect ratio */
-    border-radius: 12px;
-  }
-  
+  width: 100%;
+
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #C7DDEE;
+}
+
+.featured-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #131313;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(250px, 1fr)); /* Set three columns */
+  grid-auto-rows: auto; /* 🔹Let the rows adjust automatically  */
+  gap: 20px;
+  justify-content: center;
+  max-width: 1000px; /* 🔹 Limits the width of the container */
+  margin: 0 auto; /* 🔹 Center the grid */
+}
+
+.featured-card {
+  background: rgb(41, 27, 27);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.featured-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}

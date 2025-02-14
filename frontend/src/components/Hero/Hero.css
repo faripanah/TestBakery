@@ -1,83 +1,20 @@
-/* App.css */
-
-/* Ventana de registro */
-.register-window {
-  position: fixed; /* O absolute, dependiendo de tu diseño */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Asegúrate de que esté por encima de otros contenidos */
-}
-
-/* Ocultar la ventana de registro por defecto */
-.register-window.hidden {
-  display: none;
-}
-
-/* Hero */
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem;
-  background-color: #1a1a1a; /* Dark background color */
-  color: #fff;
   position: relative;
-  z-index: 1; /* Asegúrate de que esté por debajo de la ventana de registro */
-}
-
-/* Resto del CSS para .hero */
-.hero-content {
-  max-width: 50%;
-  z-index: 2;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: #f08a4b; /* Accent color */
-  margin-bottom: 0.5rem;
-}
-
-.hero-title {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.hero-btn {
-  background-color: #f08a4b;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.hero-btn:hover {
-  background-color: #d47339; /* Darker accent color */
-}
-
-/* Hero Image */
-.hero-image {
-  max-width: 50%;
-}
-
-.hero-image img {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  background: url('../../assets/Images/hero.png') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding-left: 50px;
+  align-items: flex-start;
+  text-align: left;
+
 }
 
-/* Background Overlay (Optional for style) */
 .hero::before {
   content: "";
   position: absolute;
@@ -85,23 +22,39 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("pattern-overlay.png"); /* Optional decorative overlay */
-  opacity: 0.3;
-  z-index: 1;
+  background: rgba(0, 0, 0, 0.6); /* Oscurece la imagen de fondo */
+}
+.slog{
+  text-align: center
+
 }
 
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #f4a261;
+  position: relative;
+}
 
-  .hero-content {
-    max-width: 100%;
-    margin-bottom: 2rem;
-  }
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  position: relative;
+}
 
-  .hero-image {
-    max-width: 100%;
-  }
+.hero-btn {
+  background: #a0522d;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: background 0.3s;
+  position: relative;
+  
+}
+
+.hero-btn:hover {
+  background: #8b4513;
 }

@@ -1,13 +1,14 @@
-/* App.css */
 .container {
     display: flex;
     flex-direction: column;
-    
+    /* Centra los componentes horizontalmente */
+    gap: 40px;  /* 🔹 Agrega espacio entre los componentes */
+    padding: 20px;
+    background-color: #C7DDEE;
+  }
+  
+  
+  .header, .hero, .featured-treats {
     width: 100%;
   }
   
-  .component {
-    width: 100%;
-    padding: 20px;
-    
-  }
