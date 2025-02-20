@@ -3,8 +3,8 @@ const Product = require('../models/Product');
 // Crear un nuevo producto
 const createProduct = async (req, res) => {
   try {
-    const { name, description, price, stock, imageUrl } = req.body;
-    const newProduct = new Product({ name, description, price, stock, imageUrl });
+    const { name, description, price, stock, imageUrl, ingredients, rating, reviews, category, weight } = req.body;
+    const newProduct = new Product({ name, description, price, stock, imageUrl, ingredients, rating, reviews, category, weight });
     await newProduct.save();
     res.status(201).json({ message: 'Producto creado exitosamente', product: newProduct });
   } catch (error) {
@@ -38,8 +38,8 @@ const getProductById = async (req, res) => {
 // Actualizar un producto
 const updateProduct = async (req, res) => {
   try {
-    const { name, description, price, stock, imageUrl } = req.body;
-    const product = await Product.findByIdAndUpdate(req.params.id, { name, description, price, stock, imageUrl }, { new: true });
+    const { name, description, price, stock, imageUrl, ingredients, rating, reviews, category, weight } = req.body;
+    const product = await Product.findByIdAndUpdate(req.params.id, { name, description, price, stock, imageUrl, ingredients, rating, reviews, category, weight }, { new: true });
     if (!product) {
       return res.status(404).json({ message: 'Producto no encontrado' });
     }

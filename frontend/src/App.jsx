@@ -4,23 +4,28 @@ import PromoSection from './components/PromoSection/PromoSection';
 import FeaturedTreats from './components/FeaturedTreats/FeaturedTreats';
 import Hero from './components/Hero/Hero';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-//import Register from './Register';
-//import Login from './Login';
+import ProductDisplay from './components/productsDisplay/ProductDisplay'; // Asegúrate de importar ProductDisplay
+import Cart from './components/cart/Cart'; // Importa el componente Cart
+import { useState } from 'react';
+import { CartProvider } from './components/context/CartContext'; // Asegúrate de importar CartProvider
 
 function App() {
+  const [showCart, setShowCart] = useState(false);
+
   return (
-    <Router>
-      <div className="container">
-        <Header className="header" />
-        <Hero className="hero" />
-        <FeaturedTreats className="featured-treats" />
-        <PromoSection className="promo-section" />
-      </div>
-      <Routes>
-        {/*<Route path="/register" element={<Register />} />*/}
-        {/*<Route path="/login" element={<Login />} />*/}
-      </Routes>
-    </Router>
+    <CartProvider>
+      <Router>
+        <div className="container">
+          <Header />
+          <Hero />
+          <Routes>
+            <Route path="/" element={<FeaturedTreats setShowCart={setShowCart} />} />
+            <Route path="/product/:id" element={<ProductDisplay />} />
+          </Routes>
+          {showCart && <Cart setShowCart={setShowCart} />}
+        </div>
+      </Router>
+    </CartProvider>
   );
 }
 

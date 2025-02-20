@@ -1,21 +1,21 @@
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 
-// Login de usuario
+// User login
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: 'Correo electrónico o contraseña incorrectos' });
+      return res.status(400).json({ message: 'Incorrect email or password' });
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Correo electrónico o contraseña incorrectos' });
+      return res.status(400).json({ message: 'Incorrect email or password' });
     }
-    res.status(200).json({ message: 'Usuario autenticado exitosamente', user });
+    res.status(200).json({ message: 'User authenticated successfully', user });
   } catch (error) {
-    res.status(500).json({ message: 'Error al autenticar usuario', error });
+    res.status(500).json({ message: 'Error authenticating user', error });
   }
 };
 

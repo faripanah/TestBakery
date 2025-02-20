@@ -30,7 +30,7 @@ mongoose.connect('mongodb://localhost:27017/bakeryDB', {
 // Usar las rutas de usuarios
 app.use('/api/users', userRoutes); 
 // Usar las rutas de productos
-app.use('/api/products', productRoutes); // Asegúrate de tener este archivo si lo necesitas
+app.use('/api', productRoutes); // Asegúrate de tener este archivo si lo necesitas
 // Usar las rutas de login
 app.use('/api/login', loginRoutes);
 

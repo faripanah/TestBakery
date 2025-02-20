@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './UserStyle.css'; // Estilos para el modal
+import './UserStyle.css'; // Styles for the modal
 
 const UserForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -21,15 +21,15 @@ const UserForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validar que las contraseñas coincidan
+    // Validate that passwords match
     if (formData.password !== formData.confirmPassword) {
-      alert('Las contraseñas no coinciden');
+      alert('Passwords do not match');
       return;
     }
 
-    // Enviar datos al backend
+    // Send data to the backend
     try {
-      const response = await fetch('http://localhost:3000/api/users', {
+      const response = await fetch('http://localhost:3000/api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,15 +38,15 @@ const UserForm = ({ onClose }) => {
       });
 
       if (response.ok) {
-        alert('Usuario registrado exitosamente');
-        onClose(); // Cerrar el modal después de registrar
+        alert('User registered successfully');
+        onClose(); // Close the modal after registering
       } else {
         const errorData = await response.json();
-        alert(errorData.message || 'Error al registrar el usuario');
+        alert(errorData.message || 'Error registering user');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('Error al conectar con el servidor');
+      alert('Error connecting to the server');
     }
   };
 

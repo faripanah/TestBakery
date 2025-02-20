@@ -1,48 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import ProductCard from "../ProductCard/ProductCard";
+import ProductDisplay from "../productsDisplay/ProductDisplay"; // Importa ProductDisplay
 import "./FeaturedTreats.css";
-import ProductCard from "../ProductCard/ProductCard"; // Importa el componente ProductCard
-import Cart from "../cart/Cart";
+import { CartContext } from "../context/CartContext"; // Importa CartContext
 
-// Importa imágenes
-import treat1 from "../../assets/Images/treat1.jpg";
-import treat2 from "../../assets/Images/treat2.jpg";
-import treat3 from "../../assets/Images/treat3.jpg";
-import treat4 from "../../assets/Images/treat4.png";
-import treat5 from "../../assets/Images/treat5.png";
-import treat6 from "../../assets/Images/treat6.png";
+const FeaturedTreats = ({ setShowCart }) => {
+  const [products, setProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null); // Estado para el producto seleccionado
+  const { addToCart } = useContext(CartContext); // Usa el contexto del carrito
 
-const FeaturedTreats = () => {
-  const [cart, setCart] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/api/products")
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.error("Error fetching products:", error));
+  }, []);
 
-  const treats = [
-    { id: 1, name: "Puff Pastry", price: 10, image: treat1 },
-    { id: 2, name: "Doughnuts", price: 12, image: treat2 },
-    { id: 3, name: "Brownies", price: 12, image: treat3 },
-    { id: 4, name: "Croissant", price: 8, image: treat4 },
-    { id: 5, name: "Cheesecake", price: 14, image: treat5 },
-    { id: 6, name: "Cinnamon Roll", price: 9, image: treat6 },
-  ];
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setShowCart(true);
+  };
 
-  const addToCart = (product) => {
-    setCart([...cart, product]);
-    console.log(`Added ${product.name} to cart`);
+  const handleViewDetails = (product) => {
+    setSelectedProduct(product); // Establece el producto seleccionado
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedProduct(null); // Cierra el producto seleccionado
   };
 
   return (
-    <div className="featured-section">
-      <h2 className="featured-title">Featured Treats</h2>
+    <section className="featured-section">
+      <h2 className="featured-title">Top Products</h2>
       <div className="featured-grid">
-        {treats.map((treat) => (
+        {products.map((product) => (
           <ProductCard
-            key={treat.id}
-            product={treat}
-            onAddToCart={addToCart} // 
+            key={product._id}
+            product={product}
+            onAddToCart={handleAddToCart}
+            onViewDetails={handleViewDetails} // Pasa la función para ver detalles
           />
         ))}
       </div>
-
-      <Cart cart={cart} />
-    </div>
+      {selectedProduct && (
+        <div className="product-display-overlay">
+          <ProductDisplay product={selectedProduct} onClose={handleCloseDetails} />
+        </div>
+      )}
+    </section>
   );
 };
 
