@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deplay": "gh-page -dist"
+    "deplay": "gh-page -d dist"
 
 
   },
