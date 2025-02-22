@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
-const productRoutes = require('./routes/productRoutes'); // Asegúrate de tener este archivo si lo necesitas
+const productRoutes = require('./routes/productRoutes'); // Make sure you have this file if needed - Varmista, että sinulla on tämä tiedosto, jos tarvitset sitä
 const loginRoutes = require('./routes/loginRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,29 +12,29 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/test', (req, res) => {
-  res.send('Servidor funcionando correctamente');
+  res.send('Server running correctly'); // Palvelin toimii oikein
 });
 
-// Conectar a MongoDB
+// Connect to MongoDB - Yhdistä MongoDB:hen
 mongoose.connect('mongodb://localhost:27017/bakeryDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
 .then(() => {
-  console.log('Conectado a MongoDB');
+  console.log('Connected to MongoDB'); // Yhdistetty MongoDB:hen
 })
 .catch((error) => {
-  console.error('Error conectando a MongoDB:', error);
+  console.error('Error connecting to MongoDB:', error); // Virhe yhdistettäessä MongoDB:hen
 });
 
-// Usar las rutas de usuarios
+// Use user routes - Käytä käyttäjäreittejä
 app.use('/api/users', userRoutes); 
-// Usar las rutas de productos
-app.use('/api', productRoutes); // Asegúrate de tener este archivo si lo necesitas
-// Usar las rutas de login
+// Use product routes - Käytä tuotereittejä
+app.use('/api', productRoutes); // Make sure you have this file if needed - Varmista, että sinulla on tämä tiedosto, jos tarvitset sitä
+// Use login routes - Käytä kirjautumisreittejä
 app.use('/api/login', loginRoutes);
 
-// Iniciar el servidor
+// Start the server - Käynnistä palvelin
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`); // Palvelin käynnissä osoitteessa http://localhost:${PORT}
 });

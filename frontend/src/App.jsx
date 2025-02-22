@@ -4,10 +4,11 @@ import PromoSection from './components/PromoSection/PromoSection';
 import FeaturedTreats from './components/FeaturedTreats/FeaturedTreats';
 import Hero from './components/Hero/Hero';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProductDisplay from './components/productsDisplay/ProductDisplay'; // Asegúrate de importar ProductDisplay
-import Cart from './components/cart/Cart'; // Importa el componente Cart
+import ProductDisplay from './components/productsDisplay/ProductDisplay'; 
+import Cart from './components/cart/Cart'; 
 import { useState } from 'react';
-import { CartProvider } from './components/context/CartContext'; // Asegúrate de importar CartProvider
+import { CartProvider } from './components/context/CartContext'; 
+import Footer from './components/Footer/Footer'
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -23,6 +24,8 @@ function App() {
             <Route path="/product/:id" element={<ProductDisplay />} />
           </Routes>
           {showCart && <Cart setShowCart={setShowCart} />}
+          <PromoSection/>
+          <Footer/>
         </div>
       </Router>
     </CartProvider>

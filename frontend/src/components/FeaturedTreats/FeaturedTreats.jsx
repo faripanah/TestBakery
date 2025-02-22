@@ -1,19 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import ProductDisplay from "../productsDisplay/ProductDisplay"; // Importa ProductDisplay
+import ProductDisplay from "../productsDisplay/ProductDisplay"; // Import ProductDisplay - Tuo ProductDisplay
 import "./FeaturedTreats.css";
-import { CartContext } from "../context/CartContext"; // Importa CartContext
+import { CartContext } from "../context/CartContext"; // Import CartContext - Tuo CartContext
 
 const FeaturedTreats = ({ setShowCart }) => {
   const [products, setProducts] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState(null); // Estado para el producto seleccionado
-  const { addToCart } = useContext(CartContext); // Usa el contexto del carrito
+  const [selectedProduct, setSelectedProduct] = useState(null); // State for the selected product - Valittu tuote -tila
+  const { addToCart } = useContext(CartContext); // Use the cart context - Käytä ostoskorin kontekstia
 
   useEffect(() => {
     fetch("http://localhost:3000/api/products")
       .then((response) => response.json())
       .then((data) => setProducts(data))
-      .catch((error) => console.error("Error fetching products:", error));
+      .catch((error) => console.error("Error fetching products:", error)); // Virhe tuotteiden hakemisessa
   }, []);
 
   const handleAddToCart = (product) => {
@@ -22,23 +22,23 @@ const FeaturedTreats = ({ setShowCart }) => {
   };
 
   const handleViewDetails = (product) => {
-    setSelectedProduct(product); // Establece el producto seleccionado
+    setSelectedProduct(product); // Set the selected product - Aseta valittu tuote
   };
 
   const handleCloseDetails = () => {
-    setSelectedProduct(null); // Cierra el producto seleccionado
+    setSelectedProduct(null); // Close the selected product - Sulje valittu tuote
   };
 
   return (
     <section className="featured-section">
-      <h2 className="featured-title">Top Products</h2>
+      <h2 className="featured-title">Top Products</h2> {/* Parhaat tuotteet */}
       <div className="featured-grid">
         {products.map((product) => (
           <ProductCard
             key={product._id}
             product={product}
             onAddToCart={handleAddToCart}
-            onViewDetails={handleViewDetails} // Pasa la función para ver detalles
+            onViewDetails={handleViewDetails} // Pass function to view details - Välitä funktio tuotteen katseluun
           />
         ))}
       </div>

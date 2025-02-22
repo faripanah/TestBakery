@@ -6,7 +6,7 @@
   align-items: center;
   width: 100%;
 }
-  .header, .hero, .featured-treats {
+  .header, .hero, .featured-treats, .PromoSection, .footer {
     width: 100%;
   }
   

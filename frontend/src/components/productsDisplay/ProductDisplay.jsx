@@ -3,7 +3,7 @@ import "./ProductDisplay.css";
 
 const ProductDisplay = ({ product, onClose }) => {
   if (!product) {
-    return null; // No renderizar nada si product es undefined
+    return null; 
   }
 
   const { name, description, price, image, ingredients, rating, reviews } = product;

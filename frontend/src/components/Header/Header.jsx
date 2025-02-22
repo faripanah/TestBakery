@@ -3,12 +3,14 @@ import logo from '../../assets/Images/bakerylogo.png';
 import './Header.css';
 import UserForm from '../userForm/UserForm';
 import Cart from "../cart/Cart";
-
+import { CartContext } from "../context/CartContext";
 
 const Header = () => {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+  const [showCart, setShowCart] = useState(false); 
+
+  const { cartItems } = useContext(CartContext);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -37,10 +39,16 @@ const Header = () => {
       <div className="icons">
         <i className="fas fa-search" title="Search"></i>
 
-        <i className="fas fa-shopping-cart" title='search'>
+       {/* ✅ Cart Icon - Toggles Cart Visibility */}
+       <i className="fas fa-shopping-cart" onClick={() => {
+            console.log("🛒 Cart Icon Clicked!"); 
+            setShowCart(!showCart);
+          }} title="Cart">
+            ({cartItems.length})
+          </i>
             
           
-          </i>
+          
         <i className="fas fa-user" title="User"></i>
         <button onClick={openModal} className="register-button">
           Register
@@ -49,7 +57,10 @@ const Header = () => {
 
       {/* Mostrar UserForm si isModalOpen es true */}
       {isModalOpen && <UserForm onClose={closeModal} />}
-      {/* ✅ Pass setShowCart to Cart */}
+      
+
+       {/* ✅ Mostrar carrito si showCart es true */}
+       {showCart && <Cart setShowCart={setShowCart} />} 
       
     </header>
   );
