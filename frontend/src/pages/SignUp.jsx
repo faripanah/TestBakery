@@ -8,7 +8,11 @@ function SignUp() {
     const [phone, setPhone] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 2a7045e76e1245f47dd2510036daa4722036f135
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log(name, email, address, phone, password, confirmPassword);
