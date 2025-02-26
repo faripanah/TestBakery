@@ -1,4 +1,5 @@
-export default [
+//This file exports an array of user objects. Each object contains id, name, image, phone, email and address properties. 
+const users =[
     {
       id: 1,
       name: 'Bertie Yates',
@@ -46,4 +47,5 @@ export default [
         address: 'Vantaa Finland',
     },
   ];
+  export default users;
   

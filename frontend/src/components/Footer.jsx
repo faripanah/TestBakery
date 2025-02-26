@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/Images/bakerylogo.png";
 const Footer = () => {
     return (
@@ -41,7 +41,7 @@ const Footer = () => {
             <h3>Find Store</h3>
             <ul>
             <li><a href="/">Career</a></li>
-            <li><a href="/">My Account</a></li>
+            <li><Link to="/user">My Account</Link></li>
             <li><a href="/">Order Online</a></li>
             </ul>
           </div>

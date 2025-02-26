@@ -1,14 +1,18 @@
 import { useState } from "react";
-import data from "../userData.js";
+import users from "../usersData.js";
 
 function UsersList() {
-    const [people, usePeople] = useState(data);
+    const [people, setPeople] = useState(users);
+
+    const handleDelete = (id) => {
+        setPeople(people.filter(person => person.id !== id));
+    };
   return (
     <main>
         <section>
             <h2> {people.length} users</h2>
             <>
-                {people.map(person => {const {id, name, username, image, email, address, phone, } = person;
+                {people.map(person => {const {id, name, image, phone, address, email} = person;
                                         return(
                                             <article key={id}>
                                                 <img src={image} alt="user image" className="person-img"/> 
@@ -18,8 +22,8 @@ function UsersList() {
                                                     <p>{address}</p>
                                                     <p>{phone}</p>
                                                 </div>
-                                                <button>Edit</button>
-                                                <button>Delete</button>
+                                                <button >Edit</button>
+                                                <button onClick={() => handleDelete(id)}>Delete</button>
                                             </article>
 
                                         )
@@ -32,4 +36,4 @@ function UsersList() {
   )
 }
 
-export default UsersList
+export default User;
